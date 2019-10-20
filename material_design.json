@@ -1,0 +1,26 @@
+{
+	"Container": {
+		"scope": "html",
+		"prefix": "mat-container",
+		"body": [
+			"<div class=\"container\">$1</div>"
+		],
+		"description": "Material design container"
+	},
+	"Row": {
+		"scope": "html",
+		"prefix": "mat-row",
+		"body": [
+			"<div class=\"row\"><div class=\"col s$1 m$2 l$3\">$4</div></div>"
+		],
+		"description": "Material design row"
+	},
+	"Section": {
+		"scope": "html",
+		"prefix": "mat-section",
+		"body": [
+			"<section class=\"section\">$1</section>"
+		],
+		"description": "Material design section"
+	}
+}
