@@ -1,0 +1,28 @@
+{
+	"Database settings": {
+		"scope": "python",
+		"prefix": "dj-database-settings",
+		"body": [
+			"{",
+			"\t'default': {",
+			"\t\t'ENGINE': 'django.db.backends.postgresql',",
+			"\t\t'NAME': '$1',",
+			"\t\t'USER': '$2',",
+			"\t\t'PASSWORD': '$3',",
+			"\t\t'HOST': os.environ.get('DB_HOST', 'localhost'),",
+			"\t\t'PORT': '5432',",
+			"\t\t}",
+			"\t}"
+		],
+		"description": "Database settings"
+	},
+	"Static and settings": {
+		"scope": "python",
+		"prefix": "dj-settings-debug",
+		"body": [
+			"if settings.DEBUG:",
+			"\turlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)",
+			"\turlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)"
+        ]
+	}
+}

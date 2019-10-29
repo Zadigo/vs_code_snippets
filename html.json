@@ -232,6 +232,22 @@
 		],
 		"description": "Date filter"
 	},
+	"Multi-comment": {
+		"prefix": "jinja-multicomment",
+		"body": [
+			"{% comment %}",
+			"\t$1",
+			"{% endcomment %}"
+		],
+		"description": "Multi-line comment"
+	},
+	"Comment": {
+		"prefix": "jinja-comment",
+		"body": [
+			"{# $1 #}"
+		],
+		"description": "Comment"
+	},
 	"Material design HTML": {
 		"prefix": "mat-html:5",
 		"body": [
@@ -276,5 +292,13 @@
 			"</html>"
 		],
 		"description": "HTML template with material design"
+	},
+	"Truncate": {
+		"Truncate characters",
+		"prefix": "jinja-truncate-chars",
+		"body": [
+			"{{ $1|truncatechars:${2:number} }}"
+		],
+		"description": "Truncate characters"
 	}
 }
