@@ -1,0 +1,35 @@
+{
+	"Vue component": {
+		"scope": "javascript",
+		"prefix": "vue-component",
+		"body": [
+			"var ${1:name} = {",
+			"\ttemplate: \"$2\",",
+			"\tdata() {",
+			"\t\treturn {",
+			"\t\t\t${3:variable}: ${4:undefined}",
+			"\t\t}",
+			"\t}",
+			"}"
+		],
+		"description": "Create VueJS component"
+	},
+	"New Vue instance": {
+		"scope": "javascript",
+		"prefix": "vue-instance",
+		"body": [
+			"var ${1:name} = new Vue({",
+			"\tel: \"#${2:app}\",",
+			"\tcomponents: {}",
+			"\tdata() {",
+			"\t\treturn {",
+			"\t\t\t${3:variable}: ${4:undefined}",
+			"\t\t}",
+			"\t},",
+			"\tcomputed: {}",
+			"\tmethods: {},",
+			"})"
+		],
+		"description": "Create VueJS instance"
+	}
+}

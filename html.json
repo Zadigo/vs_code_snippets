@@ -2,7 +2,7 @@
 	"Inline block": {
 		"prefix": "jinja-inline-block",
 		"body": [
-			"{% block $1 %}{% endblock %}"
+			"{% block $1 %}$2{% endblock %}"
 		],
 		"description": "Creates a simple block"
 	},
@@ -23,11 +23,25 @@
 		"description": "Extend a template"
 	},
 	"Tag": {
-		"prefix": "jinja-tag",
+		"prefix": "jinja-tempalate-tag",
 		"body": [
 			"{% $1 %}"
 		],
-		"description": "Create a tag"
+		"description": "Create a simple Jinja tag"
+	},
+	"Tag with filter": {
+		"prefix": "jinja-tempalate-tag",
+		"body": [
+			"{% $1|${2:filter} %}"
+		],
+		"description": "Create a simple Jinja tag with a filter"
+	},
+	"Tag with argument": {
+		"prefix": "jinja-tempalate-args",
+		"body": [
+			"{% $1 ${2:arg} %}"
+		],
+		"description": "Create a simple Jinja tag with an argument"
 	},
 	"Url": {
 		"prefix": "jinja-url",
@@ -37,9 +51,9 @@
 		"description": "Create a specific url tag"
 	},
 	"Url with paramater": {
-		"prefix": "jinja-url-with-parameter",
+		"prefix": "jinja-url-with-argument",
 		"body": [
-			"{% url \"$1\" ${2: parameter} %}"
+			"{% url \"$1\" ${2:argument} %}"
 		],
 		"description": "Create an url tag with parameters"
 	},
@@ -77,7 +91,7 @@
 		"body": [
 			"{{ $1 }}"
 		],
-		"description": "Create a variable"
+		"description": "Create a simple Jinja variable"
 	},
 	"Variable with default": {
 		"prefix": "jinja-variable-default",
@@ -101,7 +115,7 @@
 		"description": "Include an element in the template"
 	},
 	"Include with context": {
-		"prefix": "jinja-include-context",
+		"prefix": "jinja-include-parameters",
 		"body": [
 			"{% include \"$1\" with $2=\"$3\" %}"
 		],
@@ -151,7 +165,7 @@
 			"\t$3",
 			"{% empty %}",
 			"\t$4",
-			"{% endwfor %}"
+			"{% endfor %}"
 		],
 		"description": "For loop with an empty option when the value is none"
 	},
@@ -193,7 +207,7 @@
 	"JSON script": {
 		"prefix": "jinja-json-script",
 		"body": [
-			"{{ $1|json_script:\"${2: id}\" }}"
+			"{{ $1|json_script:\"${2:id}\" }}"
 		],
 		"description": "Transform a python dict to a useable Javascript object"
 	},
@@ -233,7 +247,7 @@
 		"description": "Date filter"
 	},
 	"Multi-comment": {
-		"prefix": "jinja-multicomment",
+		"prefix": "jinja-comment-multiline",
 		"body": [
 			"{% comment %}",
 			"\t$1",
@@ -288,17 +302,78 @@
 			"\t\t\t\t$('.modal').modal();",
 			"\t\t\t});",
 			"\t\t</script>",
+			"",
+			"\t\t<!-- LODASH -->",
+			"\t\t<script src=\"https://cdn.jsdelivr.net/npm/lodash@4.17.15/lodash.min.js\"></script>",
+			"",
+			"\t\t<!-- VUEJS -->",
+			"\t\t<script src=\"https://cdn.jsdelivr.net/npm/vue/dist/vue.js\"></script>",
 			"\t</body>",
 			"</html>"
 		],
 		"description": "HTML template with material design"
 	},
 	"Truncate": {
-		"Truncate characters",
 		"prefix": "jinja-truncate-chars",
 		"body": [
 			"{{ $1|truncatechars:${2:number} }}"
 		],
 		"description": "Truncate characters"
+	},
+	"Link": {
+		"prefix": "jinja-link",
+		"body": [
+			"<a href=\"{% url '$1' %}\">$2</a>"
+		],
+		"description": "Create an HTML link using Jinja"
+	},
+	"Link with parameter": {
+		"prefix": "jinja-link-parameter",
+		"body": [
+			"<a href=\"{% url '$1' ${2: parameter} %}\">$2</a>"
+		],
+		"description": "Create an HTML link using Jinja"
+	},
+	"Vue component tag": {
+		"prefix": "vue-component-tag",
+		"body": [
+			"<$1 />"
+		],
+		"description": "Create vue component in HTML tag"
+	},
+	"Vue component tag with bind": {
+		"prefix": "vue-component-bind",
+		"body": [
+			"<$1 v-bind:${1:parameter}=\"${2:parameter}\" />"
+		],
+		"description": "Create vue component in HTML with v-bind"
+	},
+	"Vue component tag with loop": {
+		"prefix": "vue-component-for",
+		"body": [
+			"<$1 v-for=\"${2:parameter}\" :key=\"${3:parameter}\" />"
+		],
+		"description": "Create vue component in HTML with for-loop"
+	},
+	"Vue component tag with action": {
+		"prefix": "vue-component-action",
+		"body": [
+			"<$1 @${1:action}=\"${:function}\" />"
+		],
+		"description": "Create vue component with an event action"
+	},
+	"Static": {
+		"prefix": "jinja-static-link",
+		"body": [
+			"<script src=\"{% static '$1' %}\"></script>"
+		],
+		"description": "Create an static tag using Jinja"
+	},
+	"Load static prefix": {
+		"prefix": "jinja-get-static-prefix",
+		"body": [
+			"{% get_static_prefix as STATIC_PREFIX %}"
+		],
+		"description": "Load static prefix at the top of the document"
 	}
 }
